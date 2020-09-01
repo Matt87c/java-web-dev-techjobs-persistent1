@@ -26,6 +26,13 @@ public class EmployerController {
     @Autowired
     private SkillRepository skillRepository;
 
+    @GetMapping
+    public String display(Model model) {
+        model.addAttribute(new Employer());
+        model.addAttribute("employers", employerRepository.findAll());
+        return "redirect:/add";
+    }
+    
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
         model.addAttribute(new Employer());
