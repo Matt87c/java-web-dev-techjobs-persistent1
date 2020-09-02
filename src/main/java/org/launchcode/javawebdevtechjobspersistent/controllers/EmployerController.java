@@ -26,6 +26,12 @@ public class EmployerController {
     @Autowired
     private SkillRepository skillRepository;
 
+    @RequestMapping("")
+    public String index(Model model) {
+        model.addAttribute("employers", employerRepository.findAll());
+        return "employers/index";
+    }
+    
     @GetMapping
     public String display(Model model) {
         model.addAttribute(new Employer());
